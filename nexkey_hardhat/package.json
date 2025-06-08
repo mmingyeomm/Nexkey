@@ -1,16 +1,27 @@
 {
-  "name": "hardhat-project",
+  "name": "nexkey-hardhat",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npx hardhat run scripts/fullSetup.js --network render",
+    "setup:besu": "npx hardhat run scripts/fullSetup.js --network besu",
+    "deploy:registry": "npx hardhat run scripts/deployDIDRegistry.js --network dev",
+    "deploy:interpark": "npx hardhat run scripts/deployInterpark.js --network dev",
+    "create:dids": "npx hardhat run scripts/createMultipleDIDs.js --network dev",
+    "test:purchase": "npx hardhat run scripts/testTicketPurchase.js --network dev",
+    "compile": "npx hardhat compile",
+    "clean": "npx hardhat clean"
   },
-  "keywords": [],
+  "keywords": ["blockchain", "did", "identity", "nexkey", "hardhat"],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "NEXKEY DID Registry and Ticket System",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "hardhat": "^2.24.2"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.3.0"
   }
 }
