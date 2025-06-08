@@ -122,6 +122,14 @@ jwt.hex
 besu.networks
 besu.ports
 
+# Besu runtime files (dynamic data)
+database/
+*/database/
+caches/
+*/caches/
+fastsync/
+*/fastsync/
+
 # Hardhat Ignition deployments
 ignition/deployments/
 */ignition/deployments/ 
