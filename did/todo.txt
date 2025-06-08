@@ -1,0 +1,8 @@
+This service is a SaaS platform for access management that leverages mobile IDs and OpenDID (decentralized identity). Users can conveniently receive, manage, and use various types of access passes—including employee badges, student IDs, and concert tickets—through a single mobile app. Meanwhile, issuing organizations such as companies, universities, and event organizers can centrally issue and manage these passes.
+
+When issuing an access pass, the organization defines the issuing body, the authorized access locations (authentication institutions), the validity period, and whether the pass can be transferred or traded. They can also monitor which user holds which pass, manage user permissions, and batch-update related details like validity or access rights.
+
+Users install the app, link their mobile ID, and can then apply for, organize, or delete access passes as needed. Once a pass is issued, the user can simply click on it within the app to display a QR code or barcode, which can be scanned at existing access control devices (such as scanners or readers) to authenticate and gain entry.
+
+This service can be applied in a wide range of scenarios, including student ID-based access to libraries and campus buildings, employee badge access to offices and research facilities, concert or event entry using digital tickets, and authentication for entry and payment at unmanned convenience stores or self-service retail locations.
+
