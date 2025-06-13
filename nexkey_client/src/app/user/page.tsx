@@ -43,12 +43,6 @@ export default function UserAppPage() {
               >
                 홈으로
               </Link>
-              <Link 
-                href="/en" 
-                className="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                ENG
-              </Link>
             </motion.div>
           </div>
         </div>
