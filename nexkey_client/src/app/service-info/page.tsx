@@ -4,70 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Header from '@/components/common/Header';
 
 const ServiceIntroduction = () => {
   return (
     <div className="bg-white min-h-screen">
-      {/* 네비게이션 바 */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <Link href="/" className="flex items-center space-x-2">
-                  <Image
-                    src="/images/NexKey_logo.png"
-                    alt="NexKey"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto"
-                    priority
-                  />
-                </Link>
-              </div>
-              <div className="hidden sm:ml-8 sm:flex sm:space-x-8">
-                {[
-                  { name: '서비스 소개', path: '/service-info' },
-                  { name: '솔루션', path: '/solution' },
-                  { name: '요금제', path: '/pricing' },
-                  { name: '고객사례', path: '/case-study' },
-                  { name: '지원', path: '/support' }
-                ].map((item) => (
-                  <Link 
-                    key={item.name}
-                    href={item.path}
-                    className={`text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                      item.name === '서비스 소개' ? 'text-blue-800 border-b-2 border-blue-800' : ''
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <Link 
-                  href="/admin"
-                  className="text-blue-800 hover:text-blue-900 px-3 py-2 text-sm font-medium transition-colors duration-200"
-                >
-                  관리자
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link 
-                href="/user" 
-                className="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                사용자 앱
-              </Link>
-              <Link 
-                href="/en" 
-                className="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                ENG
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       <div className="pt-20">
         {/* 히어로 섹션 */}

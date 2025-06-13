@@ -4,49 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import Header from '@/components/common/Header';
 
 export default function UserAppPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Navigation Bar */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20">
-            <div className="flex items-center">
-              <motion.div 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex-shrink-0"
-              >
-                <Link href="/" className="flex items-center space-x-2">
-                  <Image
-                    src="/images/NexKey_logo.png"
-                    alt="NexKey"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto"
-                    priority
-                  />
-                </Link>
-              </motion.div>
-            </div>
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center space-x-4"
-            >
-              <Link 
-                href="/" 
-                className="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                홈으로
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       <div className="pt-20">
         {/* Hero Section with App Preview */}
