@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { AccessPass, AuthorizedLocation } from '@/types/admin';
 import { useWeb3 } from '@/contexts/Web3Context';
 
@@ -10,8 +10,65 @@ interface PassManagementProps {
   onPassDetail: (passId: string) => void;
 }
 
+interface ErrorModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  message: string;
+}
+
+const ErrorModal = ({ isOpen, onClose, message }: ErrorModalProps) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <div className="fixed inset-0 z-50 overflow-y-auto">
+        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            onClick={onClose}
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+          >
+            <div className="sm:flex sm:items-start">
+              <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                </svg>
+              </div>
+              <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <h3 className="text-base font-semibold leading-6 text-gray-900">지갑 연결 오류</h3>
+                <div className="mt-2">
+                  <p className="text-sm text-gray-500">{message}</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+              <button
+                type="button"
+                className="inline-flex w-full justify-center rounded-md bg-blue-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 sm:ml-3 sm:w-auto"
+                onClick={onClose}
+              >
+                확인
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </AnimatePresence>
+  );
+};
+
 export default function PassManagement({ existingPasses, onPassDetail }: PassManagementProps) {
   const { account, connect, isConnecting } = useWeb3();
+  const [error, setError] = useState<string | null>(null);
+  const [showError, setShowError] = useState(false);
   const [passName, setPassName] = useState('');
   const [passDescription, setPassDescription] = useState('');
   const [issuingBody, setIssuingBody] = useState('');
@@ -26,13 +83,13 @@ export default function PassManagement({ existingPasses, onPassDetail }: PassMan
   const handleCreatePass = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log('account', account);
-    
     if (!account) {
       try {
         await connect();
       } catch (error) {
-        console.error('Failed to connect wallet:', error);
+        const errorMessage = error instanceof Error ? error.message : '지갑 연결에 실패했습니다.';
+        setError(errorMessage);
+        setShowError(true);
         return;
       }
     }
@@ -75,6 +132,12 @@ export default function PassManagement({ existingPasses, onPassDetail }: PassMan
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <ErrorModal
+        isOpen={showError}
+        onClose={() => setShowError(false)}
+        message={error || '지갑 연결에 실패했습니다.'}
+      />
+      
       {/* Create New Pass Form */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
