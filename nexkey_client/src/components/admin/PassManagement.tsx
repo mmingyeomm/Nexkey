@@ -25,6 +25,8 @@ export default function PassManagement({ existingPasses, onPassDetail }: PassMan
 
   const handleCreatePass = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    console.log('account', account);
     
     if (!account) {
       try {
@@ -82,8 +84,23 @@ export default function PassManagement({ existingPasses, onPassDetail }: PassMan
       >
         <div className="bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">새 패스 유형 생성</h2>
-            <p className="mt-1 text-sm text-gray-500">새로운 액세스 패스 유형 정의</p>
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900">새 패스 유형 생성</h2>
+                <p className="mt-1 text-sm text-gray-500">새로운 액세스 패스 유형 정의</p>
+              </div>
+              {account ? (
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>{account.slice(0, 6)}...{account.slice(-4)}</span>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                  <span>Not connected</span>
+                </div>
+              )}
+            </div>
           </div>
           <div className="p-6">
             <form onSubmit={handleCreatePass} className="space-y-6">

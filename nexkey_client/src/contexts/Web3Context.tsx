@@ -5,6 +5,12 @@ import { ethers } from 'ethers';
 import { Web3Provider as EthersWeb3Provider } from '@ethersproject/providers';
 import { InjectedConnector } from '@web3-react/injected-connector';
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 const injected = new InjectedConnector({
   supportedChainIds: [1, 3, 4, 5, 42, 56, 97, 137, 80001], // Add your supported chain IDs
 });
@@ -33,14 +39,27 @@ export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
   const connect = useCallback(async () => {
     try {
       setIsConnecting(true);
+      
+      if (!window.ethereum) {
+        throw new Error('Please install MetaMask or another Web3 wallet to use this feature');
+      }
+
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send('eth_requestAccounts', []);
+      
+      // Request account access
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      
       const signer = provider.getSigner();
       const account = await signer.getAddress();
+      
       setAccount(account);
       setProvider(provider);
     } catch (error) {
       console.error('Failed to connect wallet:', error);
+      if (error instanceof Error) {
+        throw new Error(`Wallet connection failed: ${error.message}`);
+      }
+      throw new Error('Failed to connect wallet');
     } finally {
       setIsConnecting(false);
     }
