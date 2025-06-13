@@ -258,9 +258,9 @@ const HomePage = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { number: "10,000+", label: "활성 사용자" },
-                { number: "500+", label: "파트너 조직" },
-                { number: "99.9%", label: "서비스 가용성" },
+                { number: "00 000+", label: "활성 사용자" },
+                { number: "000+", label: "파트너 조직" },
+                { number: "00.0%", label: "서비스 가용성" },
                 { number: "24/7", label: "고객 지원" }
               ].map((stat, index) => (
                 <motion.div
