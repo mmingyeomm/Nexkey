@@ -285,7 +285,7 @@ export default function UserAppPage() {
                   <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl opacity-20 blur-xl"></div>
                     <Image
-                      src="/images/image copy 3.png"
+                      src="/images/image copy 4.png"
                       alt="Digital Payment"
                       width={250}
                       height={500}

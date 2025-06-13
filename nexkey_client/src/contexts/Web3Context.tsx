@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
 import { ethers } from 'ethers';
-import { Web3Provider } from '@ethersproject/providers';
+import { Web3Provider as EthersWeb3Provider } from '@ethersproject/providers';
 import { InjectedConnector } from '@web3-react/injected-connector';
 
 const injected = new InjectedConnector({
@@ -11,7 +11,7 @@ const injected = new InjectedConnector({
 
 interface Web3ContextType {
   account: string | null;
-  provider: Web3Provider | null;
+  provider: EthersWeb3Provider | null;
   connect: () => Promise<void>;
   disconnect: () => void;
   isConnecting: boolean;
@@ -25,9 +25,9 @@ const Web3Context = createContext<Web3ContextType>({
   isConnecting: false,
 });
 
-export const Web3Provider = ({ children }: { children: ReactNode }) => {
+export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
   const [account, setAccount] = useState<string | null>(null);
-  const [provider, setProvider] = useState<Web3Provider | null>(null);
+  const [provider, setProvider] = useState<EthersWeb3Provider | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
 
   const connect = useCallback(async () => {
