@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Web3Provider } from '@/contexts/Web3Context';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={`${inter.className} bg-gray-50`}>
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <Web3Provider>
+          <main className="min-h-screen">
+            {children}
+          </main>
+        </Web3Provider>
         <footer className="bg-[#1a365d] text-white py-8">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

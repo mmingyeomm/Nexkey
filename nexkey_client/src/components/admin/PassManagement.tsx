@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AccessPass, AuthorizedLocation } from '@/types/admin';
+import { useWeb3 } from '@/contexts/Web3Context';
 
 interface PassManagementProps {
   existingPasses: AccessPass[];
@@ -10,6 +11,7 @@ interface PassManagementProps {
 }
 
 export default function PassManagement({ existingPasses, onPassDetail }: PassManagementProps) {
+  const { account, connect, isConnecting } = useWeb3();
   const [passName, setPassName] = useState('');
   const [passDescription, setPassDescription] = useState('');
   const [issuingBody, setIssuingBody] = useState('');
@@ -23,6 +25,16 @@ export default function PassManagement({ existingPasses, onPassDetail }: PassMan
 
   const handleCreatePass = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!account) {
+      try {
+        await connect();
+      } catch (error) {
+        console.error('Failed to connect wallet:', error);
+        return;
+      }
+    }
+
     // TODO: Implement pass creation logic with OpenDID integration
     console.log('Creating new access pass:', { 
       passName, 
@@ -33,7 +45,8 @@ export default function PassManagement({ existingPasses, onPassDetail }: PassMan
       validityStart,
       validityEnd,
       isTransferable,
-      isTradable
+      isTradable,
+      walletAddress: account
     });
   };
 

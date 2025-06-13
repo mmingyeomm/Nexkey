@@ -37,7 +37,6 @@ const HomePage = () => {
               <div className="hidden sm:ml-8 sm:flex sm:space-x-8">
                 {[
                   { name: '서비스 소개', path: '/service-info' },
-                  { name: '솔루션', path: '/solution' },
                 ].map((item, index) => (
                   <motion.div
                     key={item.name}

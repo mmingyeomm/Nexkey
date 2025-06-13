@@ -14,7 +14,7 @@ async function main() {
     // 네트워크별 DID Registry 주소 설정
     let DID_REGISTRY_ADDRESS;
     if (network.name === "render") {
-      DID_REGISTRY_ADDRESS = "0xBF921f94Fd9eF1738bE25D8CeCFDFE2C822c81B0"; // Render 배포 주소
+      DID_REGISTRY_ADDRESS = "0xa50a51c09a5c451C52BB714527E1974b686D8e77"; // Render 배포 주소
     } else {
       DID_REGISTRY_ADDRESS = "0x9a3DBCa554e9f6b9257aAa24010DA8377C57c17e"; // 로컬 배포 주소
     }

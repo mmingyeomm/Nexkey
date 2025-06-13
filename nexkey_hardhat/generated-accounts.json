@@ -1,0 +1,69 @@
+{
+  "generated_at": "2025-06-09T08:07:08.869Z",
+  "network_info": {
+    "chainId": 1337,
+    "description": "Besu Development Network"
+  },
+  "accounts": [
+    {
+      "index": 0,
+      "address": "0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73",
+      "privateKey": "0x8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63",
+      "description": "기존 Besu 개발용 계정 (마이너)"
+    },
+    {
+      "index": 1,
+      "address": "0x06d6207BeCBFAA9021cD08ba457B4173bFAb5572",
+      "privateKey": "0xe6b9712a34f5486d13115fdec93d3495a39cf76e7d78951dac3b0b195576420f",
+      "description": "새로 생성된 계정 1"
+    },
+    {
+      "index": 2,
+      "address": "0x6b82C84311B4D38580E75D0d6538c87b84be2531",
+      "privateKey": "0x6d25aea59a97210d9e7148c6319e67fead016bbafd4959ad0c1da112dfe55534",
+      "description": "새로 생성된 계정 2"
+    },
+    {
+      "index": 3,
+      "address": "0x564492911C69167cC1FFD1B0B9bca4847bb32Da3",
+      "privateKey": "0xecdebcd717eb1cd4471190e184e6d487986922b02e6ebdab9c81f15ddfe029a3",
+      "description": "새로 생성된 계정 3"
+    },
+    {
+      "index": 4,
+      "address": "0x01CC483b27D20884aC18ee669f8F1A6aF71Aa8B5",
+      "privateKey": "0xad28db17ad55cf5111834b47a1812b6caf5b521a5c0a36a60f911131d1f67251",
+      "description": "새로 생성된 계정 4"
+    },
+    {
+      "index": 5,
+      "address": "0xEEef47D0030730a5b7C81408a8e0FBfe0e5c9fE1",
+      "privateKey": "0xac70a5296309168d3b3ca5fef3b148959663710d7aa847f3f198708808b00c32",
+      "description": "새로 생성된 계정 5"
+    },
+    {
+      "index": 6,
+      "address": "0xe1cD736Bc474c7cb5f8fEB411483c0d62764260C",
+      "privateKey": "0xa2973fbbdc0d296150754e4896c89a30a62dcdb2cb0d1299f64b50168f7d7e07",
+      "description": "새로 생성된 계정 6"
+    },
+    {
+      "index": 7,
+      "address": "0x875A44Fc782A46FbbE9E833106E6fDb11aCC1424",
+      "privateKey": "0xc2ee6125adcc4c35c734b2b5d4bbb53607b90bad92edf43fe8d64d7e73b64be3",
+      "description": "새로 생성된 계정 7"
+    },
+    {
+      "index": 8,
+      "address": "0xFD5D8724A8BC2541b845954321476186d6c9Ff6A",
+      "privateKey": "0x2405826a9c84a022f66886d34a894205e9de8195ada69ba21eb5342f78569854",
+      "description": "새로 생성된 계정 8"
+    },
+    {
+      "index": 9,
+      "address": "0x61A4aa2314fA10128924387C5e3f8fE0A388Cb45",
+      "privateKey": "0x126f0ee28cb46d8c657c727cfd1a330f7d0e0a01b5dcfea28870c8bd17c2ba67",
+      "description": "새로 생성된 계정 9"
+    }
+  ]
+}
