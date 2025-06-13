@@ -87,7 +87,9 @@ export default function PassManagement({ existingPasses, onPassDetail }: PassMan
       try {
         await connect();
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : '지갑 연결에 실패했습니다.';
+        const errorMessage = error instanceof Error 
+          ? error.message 
+          : '지갑 연결 중 오류가 발생했습니다.';
         setError(errorMessage);
         setShowError(true);
         return;

@@ -41,7 +41,7 @@ export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
       setIsConnecting(true);
       
       if (!window.ethereum) {
-        throw new Error('Please install MetaMask or another Web3 wallet to use this feature');
+        throw new Error('MetaMask 또는 다른 Web3 지갑을 설치해주세요.');
       }
 
       const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -55,11 +55,11 @@ export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
       setAccount(account);
       setProvider(provider);
     } catch (error) {
-      console.error('Failed to connect wallet:', error);
+      console.error('지갑 연결 실패:', error);
       if (error instanceof Error) {
-        throw new Error(`Wallet connection failed: ${error.message}`);
+        throw new Error(`지갑 연결에 실패했습니다: ${error.message}`);
       }
-      throw new Error('Failed to connect wallet');
+      throw new Error('지갑 연결에 실패했습니다.');
     } finally {
       setIsConnecting(false);
     }
